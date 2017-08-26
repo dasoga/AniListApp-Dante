@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4C4FAC3B1F51021F00586F9D /* HomeSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4FAC3A1F51021F00586F9D /* HomeSeriesViewController.swift */; };
 		4C8A6C731F5132F20043424A /* HomeSeriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C721F5132F20043424A /* HomeSeriesCollectionViewCell.swift */; };
+		4C8A6C751F5136370043424A /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C741F5136370043424A /* Serie.swift */; };
+		4C8A6C781F51BA510043424A /* CustomCoverSerieImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C771F51BA510043424A /* CustomCoverSerieImage.swift */; };
 		4CA7F48B1F50EF5600DB62E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F48A1F50EF5600DB62E8 /* AppDelegate.swift */; };
 		4CA7F4921F50EF5600DB62E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F4911F50EF5600DB62E8 /* Assets.xcassets */; };
 		4CA7F4951F50EF5600DB62E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F4931F50EF5600DB62E8 /* LaunchScreen.storyboard */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		4C4FAC3A1F51021F00586F9D /* HomeSeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeSeriesViewController.swift; path = Controller/HomeSeriesViewController.swift; sourceTree = "<group>"; };
 		4C8A6C721F5132F20043424A /* HomeSeriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeSeriesCollectionViewCell.swift; path = View/HomeSeriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C8A6C741F5136370043424A /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serie.swift; path = Model/Serie.swift; sourceTree = "<group>"; };
+		4C8A6C771F51BA510043424A /* CustomCoverSerieImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCoverSerieImage.swift; path = View/CustomCoverSerieImage.swift; sourceTree = "<group>"; };
 		4CA7F4871F50EF5600DB62E8 /* ApplaudoFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplaudoFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA7F48A1F50EF5600DB62E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CA7F4911F50EF5600DB62E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4C8A6C721F5132F20043424A /* HomeSeriesCollectionViewCell.swift */,
+				4C8A6C771F51BA510043424A /* CustomCoverSerieImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -93,8 +98,16 @@
 		4C4FAC391F5101D800586F9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C8A6C741F5136370043424A /* Serie.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		4C8A6C761F514F460043424A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		4CA7F47E1F50EF5500DB62E8 = {
@@ -121,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4CA7F48A1F50EF5600DB62E8 /* AppDelegate.swift */,
+				4C8A6C761F514F460043424A /* Network */,
 				4C4FAC391F5101D800586F9D /* Model */,
 				4C4FAC381F5101D400586F9D /* View */,
 				4C4FAC371F5101CA00586F9D /* Controller */,
@@ -282,8 +296,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8A6C781F51BA510043424A /* CustomCoverSerieImage.swift in Sources */,
 				4CA7F48B1F50EF5600DB62E8 /* AppDelegate.swift in Sources */,
 				4C8A6C731F5132F20043424A /* HomeSeriesCollectionViewCell.swift in Sources */,
+				4C8A6C751F5136370043424A /* Serie.swift in Sources */,
 				4C4FAC3B1F51021F00586F9D /* HomeSeriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
