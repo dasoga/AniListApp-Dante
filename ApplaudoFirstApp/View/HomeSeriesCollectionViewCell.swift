@@ -28,7 +28,7 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
     
     var serie: Serie? {
         didSet{
-            serieTitleLabel.text = serie?.serieTitle
+            serieTitleLabel.text = serie?.title_english
             
             setupImage()
         }
@@ -70,7 +70,7 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupImage(){
-        if let imageUrl = serie?.serieImageURL{
+        if let imageUrl = serie?.image_url_med{
             coverImage.loadImageFromURL(urlString: imageUrl, completion: { (success) in
                 if success{
                     

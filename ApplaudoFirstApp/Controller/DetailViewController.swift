@@ -38,9 +38,9 @@ class DetailViewController: UIViewController {
     var serieSelected: Serie? {
         didSet{
             
-            serieDescriptionLabel.text = serieSelected?.serieTitle
+            serieDescriptionLabel.text = serieSelected?.title_english
             
-            if let imageUrlString = serieSelected?.serieLargeImageURL{
+            if let imageUrlString = serieSelected?.image_url_lge{
                 coverImageView.loadImageFromURL(urlString: imageUrlString, completion: { (success) in
                     if success{
                         self.activityIndicator.stopAnimating()

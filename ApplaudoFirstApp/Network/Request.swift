@@ -58,24 +58,31 @@ class Request: NSObject {
             
             // Try to parse the data response
             do{
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                var series = [Serie]()
-                
-                for dictionary in json as! [[String: Any]] {
-                    // ToDo
-                    // Make this as object, not parsing manually....
-                    // Parsing data manually
-                    let serie = Serie()
-                    serie.serieTitle = dictionary["title_english"] as? String
-                    serie.serieImageURL = dictionary["image_url_med"] as? String
-                    serie.serieLargeImageURL = dictionary["image_url_lge"] as? String
-                    series.append(serie)
+                if let unwrappedData = data, let jsonDictionaries = try JSONSerialization.jsonObject(with: unwrappedData, options: .mutableContainers) as? [[String: Any]]{
+                    
+                    DispatchQueue.main.async {
+                        completion(jsonDictionaries.map({ return Serie(dictionary: $0) }))
+                    }
                 }
                 
-                DispatchQueue.main.async {
-                    completion(series)
-                }
+//                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+//                
+//                var series = [Serie]()
+//                
+//                for dictionary in json as! [[String: Any]] {
+//                    // ToDo
+//                    // Make this as object, not parsing manually....
+//                    // Parsing data manually
+//                    let serie = Serie()
+//                    serie.title_english = dictionary["title_english"] as? String
+//                    serie.image_url_med = dictionary["image_url_med"] as? String
+//                    serie.image_url_lge = dictionary["image_url_lge"] as? String
+//                    series.append(serie)
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    completion(series)
+//                }
             }catch let jsonError{
                 print(jsonError)
             }
