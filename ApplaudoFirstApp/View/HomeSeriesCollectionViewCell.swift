@@ -71,7 +71,11 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
     
     private func setupImage(){
         if let imageUrl = serie?.serieImageURL{
-            coverImage.loadImageFromURL(urlString: imageUrl)
+            coverImage.loadImageFromURL(urlString: imageUrl, completion: { (success) in
+                if success{
+                    
+                }
+            })
         }
     }
     

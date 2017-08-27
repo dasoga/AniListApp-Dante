@@ -81,7 +81,10 @@ class HomeSeriesViewController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected \(String(describing: series?[indexPath.row]))")
+        let serieSelected = series?[indexPath.row]
+        let detailController = DetailViewController()
+        detailController.serieSelected = serieSelected
+        self.navigationController?.pushViewController(detailController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

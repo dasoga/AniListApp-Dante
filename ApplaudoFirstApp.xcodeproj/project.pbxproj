@@ -18,6 +18,7 @@
 		4CA7F4951F50EF5600DB62E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F4931F50EF5600DB62E8 /* LaunchScreen.storyboard */; };
 		4CA7F4A01F50EF5600DB62E8 /* ApplaudoFirstAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F49F1F50EF5600DB62E8 /* ApplaudoFirstAppTests.swift */; };
 		4CA7F4AB1F50EF5600DB62E8 /* ApplaudoFirstAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F4AA1F50EF5600DB62E8 /* ApplaudoFirstAppUITests.swift */; };
+		4CF1BC6A1F52956100E4F05D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF1BC691F52956100E4F05D /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		4CA7F4A61F50EF5600DB62E8 /* ApplaudoFirstAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplaudoFirstAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA7F4AA1F50EF5600DB62E8 /* ApplaudoFirstAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplaudoFirstAppUITests.swift; sourceTree = "<group>"; };
 		4CA7F4AC1F50EF5600DB62E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CF1BC691F52956100E4F05D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Controller/DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				4C4FAC3A1F51021F00586F9D /* HomeSeriesViewController.swift */,
+				4CF1BC691F52956100E4F05D /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				4C8A6C7D1F5270BF0043424A /* Request.swift in Sources */,
 				4C4FAC3B1F51021F00586F9D /* HomeSeriesViewController.swift in Sources */,
 				4C8A6C7B1F526F090043424A /* Constants.swift in Sources */,
+				4CF1BC6A1F52956100E4F05D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

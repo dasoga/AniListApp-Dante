@@ -11,4 +11,5 @@ import Foundation
 class Serie: NSObject {
     var serieTitle: String?
     var serieImageURL: String?
+    var serieLargeImageURL: String?
 }

@@ -54,9 +54,7 @@ class Request: NSObject {
             
             
             // Get data success
-            // Show collection view if everthing was success
-            //            self.collectionView?.isHidden = false
-            
+            // Show collection view if everthing was success        
             
             // Try to parse the data response
             do{
@@ -71,6 +69,7 @@ class Request: NSObject {
                     let serie = Serie()
                     serie.serieTitle = dictionary["title_english"] as? String
                     serie.serieImageURL = dictionary["image_url_med"] as? String
+                    serie.serieLargeImageURL = dictionary["image_url_lge"] as? String
                     series.append(serie)
                 }
                 
@@ -84,6 +83,7 @@ class Request: NSObject {
             
             }.resume()
     }
+    
     private func getNewToken(completion: @escaping (String?) ->()){
         oauthswift = OAuth2Swift(
             consumerKey:    "dasoga-sbnuh",
@@ -92,14 +92,15 @@ class Request: NSObject {
             accessTokenUrl: "https://anilist.co/api/auth/access_token",
             responseType:   "code"
         )
+        
+        // To Do, check if we can implement Safari to oAuth 2
+//        let safari = SafariURLHandler(viewController: HomeSeriesViewController(), oauthSwift: oauthswift!)
+//        safari.delegate = self
+        
         let _ = oauthswift?.authorize(
             withCallbackURL: URL(string: "ApplaudoFirstApp://oauth-callback")!,
             scope: "", state:"AniList",
             success: { credential, response, parameters in
-                debugPrint(response)
-                print(credential.oauthToken)
-                print(credential.oauthTokenExpiresAt)
-                print(credential)
                 completion(credential.oauthToken)
                 // Do your request
                 UserDefaults.standard.set(credential.oauthToken, forKey: Constants.TOKEN_LOGIN)

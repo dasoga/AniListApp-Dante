@@ -19,7 +19,7 @@ class CustomCoverSerieImage: UIImageView {
     
     var imageCache = NSCache<AnyObject, AnyObject>()
 
-    func loadImageFromURL(urlString: String){
+    func loadImageFromURL(urlString: String, completion: @escaping (Bool) -> ()){
         // Function to download the image with a url string
         //
         imageUrlString = urlString
@@ -39,6 +39,7 @@ class CustomCoverSerieImage: UIImageView {
             // Check if data has an error
             if error != nil{
                 print(error)
+                completion(false)
                 return
             }
             
@@ -49,6 +50,7 @@ class CustomCoverSerieImage: UIImageView {
                 self.imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
                 
                 self.image = imageToCache
+                completion(true)
             }
         }).resume()
         
