@@ -7,15 +7,43 @@
 //
 
 import Foundation
+import OAuthSwift
 
 class Request: NSObject {
     static let shared = Request()
     
+    var oauthswift: OAuth2Swift?
+    
     func getSeriesData(completion: @escaping ([Serie]?) -> ()){
-        if validToken(){
+        if let tokenExpireDate = UserDefaults.standard.object(forKey: Constants.TOKEN_EXPIRE_TIME) as? Date{            
+            if tokenExpireDate < Date(){
+                self.getNewToken(completion: { (newToken) in
+                    guard let token = newToken else { return }
+                    self.getDataFromServer(token: token, completion: { (series) in
+                        completion(series)
+                    })
+                })
+            }else{
+                if let oauthToken = UserDefaults.standard.object(forKey: Constants.TOKEN_LOGIN) as? String{
+                    self.getDataFromServer(token: oauthToken, completion: { (series) in
+                        completion(series)
+                    })
+                }
+            }
+        }else{
+            getNewToken(completion: { (newToken) in
+                guard let token = newToken else { return }
+                self.getDataFromServer(token: token, completion: { (series) in
+                    completion(series)
+                })
+            })
+        }
+    }
+    
+    private func getDataFromServer(token: String, completion: @escaping ([Serie]?) -> ()){
         let dataURL = "https://anilist.co/api/anime/search/original"
         var request = URLRequest(url: URL(string: dataURL)!)
-        request.addValue("Bearer 6lMaxDHMRR5kaqCB3SG0V8nSnn1RuS3gzkusmsL9", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             // Check if the response has an error
             if error != nil{
@@ -24,16 +52,10 @@ class Request: NSObject {
                 return
             }
             
-            if let httpResponse = response as? HTTPURLResponse{
-                if httpResponse.statusCode == 401{
-                    print("Refresh token...")
-                    return
-                }
-            }
             
             // Get data success
             // Show collection view if everthing was success
-//            self.collectionView?.isHidden = false
+            //            self.collectionView?.isHidden = false
             
             
             // Try to parse the data response
@@ -61,25 +83,35 @@ class Request: NSObject {
             
             
             }.resume()
-        }else{
-            refreshToken()
-        }
     }
-    
-    private func validToken()->Bool{
-        if let tokenExpireTime = UserDefaults.standard.object(forKey: Constants.TOKEN_EXPIRE_TIME) as? Int{
-            if tokenExpireTime > 300{
-                return true
-            }else{
-                return false
-            }
+    private func getNewToken(completion: @escaping (String?) ->()){
+        oauthswift = OAuth2Swift(
+            consumerKey:    "dasoga-sbnuh",
+            consumerSecret: "2OtAOqDmi1kL3uGJxhjGNKP31BJ",
+            authorizeUrl:   "https://anilist.co/api/auth/authorize",
+            accessTokenUrl: "https://anilist.co/api/auth/access_token",
+            responseType:   "code"
+        )
+        let _ = oauthswift?.authorize(
+            withCallbackURL: URL(string: "ApplaudoFirstApp://oauth-callback")!,
+            scope: "", state:"AniList",
+            success: { credential, response, parameters in
+                debugPrint(response)
+                print(credential.oauthToken)
+                print(credential.oauthTokenExpiresAt)
+                print(credential)
+                completion(credential.oauthToken)
+                // Do your request
+                UserDefaults.standard.set(credential.oauthToken, forKey: Constants.TOKEN_LOGIN)
+                UserDefaults.standard.set(credential.oauthTokenExpiresAt, forKey: Constants.TOKEN_EXPIRE_TIME)
+                UserDefaults.standard.synchronize()
+                
+        },
+            failure: { error in
+                completion(nil)
+                print(error.localizedDescription)
         }
-        
-        return false
-    }
-    
-    private func refreshToken(){
-        
+        )
     }
     
 }

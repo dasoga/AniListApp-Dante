@@ -17,5 +17,5 @@ class Constants {
     // Login
     static let TOKEN_LOGIN = "tokenLogin"
     static let TOKEN_EXPIRE_TIME = "tokenExpireTime"
-    
+    static let TOKEN_CREDENTIAL = "tokenCredential"
 }
