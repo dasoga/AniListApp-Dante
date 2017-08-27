@@ -10,8 +10,7 @@ import UIKit
 
 class HomeSeriesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = "cellId"
-    
+//         Example of data
 //    var series: [Serie] = {
 //        var exampleSerie = Serie()
 //        exampleSerie.serieTitle = "Example of serie title to show in cell"
@@ -49,59 +48,20 @@ class HomeSeriesViewController: UICollectionViewController, UICollectionViewDele
         
         collectionView?.isHidden = true
         collectionView?.backgroundColor = .white
-        collectionView?.register(HomeSeriesCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(HomeSeriesCollectionViewCell.self, forCellWithReuseIdentifier: Constants.CELL_ID)
     }
     
     private func getSeriesData(){
-        let dataURL = "https://anilist.co/api/anime/search/original"
-        var request = URLRequest(url: URL(string: dataURL)!)
-        request.addValue("Bearer 6lMaxDHMRR5kaqCB3SG0V8nSnn1RuS3gzkusmsL9", forHTTPHeaderField: "Authorization")
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            // Check if the response has an error
-            if error != nil{
-                print("Error \(String(describing: error))")
-                return
+        Request.shared.getSeriesData { (series) in
+            if let seriesResult = series{
+                self.series = seriesResult
+                self.activityIndicator.stopAnimating()
+                self.collectionView?.isHidden = false
+                self.collectionView?.reloadData()
             }
-            
-            if let httpResponse = response as? HTTPURLResponse{
-                if httpResponse.statusCode == 401{
-                    print("Refresh token...")
-                    return
-                }
-            }
-            
-            // Get data success
-            // Show collection view if everthing was success
-            self.collectionView?.isHidden = false
-            
-            
-            // Try to parse the data response
-            do{
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                
-                self.series = [Serie]()
-                
-                for dictionary in json as! [[String: Any]] {
-                    // ToDo 
-                    // Make this as object, not parsing manually....
-                    // Parsing data manually
-                    let serie = Serie()
-                    serie.serieTitle = dictionary["title_english"] as? String
-                    serie.serieImageURL = dictionary["image_url_med"] as? String
-                    self.series?.append(serie)
-                }
-                
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.collectionView?.reloadData()
-                }
-            }catch let jsonError{
-                print(jsonError)
-            }
-            
-            
-        }.resume()
+        }
     }
+
 
     // MARK: - CollectionView methods
     
@@ -111,7 +71,7 @@ class HomeSeriesViewController: UICollectionViewController, UICollectionViewDele
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier: String
-        identifier = cellId
+        identifier = Constants.CELL_ID
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! HomeSeriesCollectionViewCell
         
         cell.serie = series?[indexPath.row]
@@ -120,7 +80,7 @@ class HomeSeriesViewController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected \(series?[indexPath.row])")
+        print("Selected \(String(describing: series?[indexPath.row]))")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

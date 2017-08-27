@@ -11,6 +11,8 @@
 		4C8A6C731F5132F20043424A /* HomeSeriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C721F5132F20043424A /* HomeSeriesCollectionViewCell.swift */; };
 		4C8A6C751F5136370043424A /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C741F5136370043424A /* Serie.swift */; };
 		4C8A6C781F51BA510043424A /* CustomCoverSerieImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C771F51BA510043424A /* CustomCoverSerieImage.swift */; };
+		4C8A6C7B1F526F090043424A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C7A1F526F090043424A /* Constants.swift */; };
+		4C8A6C7D1F5270BF0043424A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A6C7C1F5270BF0043424A /* Request.swift */; };
 		4CA7F48B1F50EF5600DB62E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F48A1F50EF5600DB62E8 /* AppDelegate.swift */; };
 		4CA7F4921F50EF5600DB62E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F4911F50EF5600DB62E8 /* Assets.xcassets */; };
 		4CA7F4951F50EF5600DB62E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F4931F50EF5600DB62E8 /* LaunchScreen.storyboard */; };
@@ -40,6 +42,8 @@
 		4C8A6C721F5132F20043424A /* HomeSeriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeSeriesCollectionViewCell.swift; path = View/HomeSeriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C8A6C741F5136370043424A /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serie.swift; path = Model/Serie.swift; sourceTree = "<group>"; };
 		4C8A6C771F51BA510043424A /* CustomCoverSerieImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCoverSerieImage.swift; path = View/CustomCoverSerieImage.swift; sourceTree = "<group>"; };
+		4C8A6C7A1F526F090043424A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Constants.swift; sourceTree = "<group>"; };
+		4C8A6C7C1F5270BF0043424A /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Network/Request.swift; sourceTree = "<group>"; };
 		4CA7F4871F50EF5600DB62E8 /* ApplaudoFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplaudoFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA7F48A1F50EF5600DB62E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CA7F4911F50EF5600DB62E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,8 +110,17 @@
 		4C8A6C761F514F460043424A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4C8A6C7C1F5270BF0043424A /* Request.swift */,
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		4C8A6C791F526EF40043424A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4C8A6C7A1F526F090043424A /* Constants.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		4CA7F47E1F50EF5500DB62E8 = {
@@ -138,6 +151,7 @@
 				4C4FAC391F5101D800586F9D /* Model */,
 				4C4FAC381F5101D400586F9D /* View */,
 				4C4FAC371F5101CA00586F9D /* Controller */,
+				4C8A6C791F526EF40043424A /* Helpers */,
 				4CA7F4911F50EF5600DB62E8 /* Assets.xcassets */,
 				4CA7F4931F50EF5600DB62E8 /* LaunchScreen.storyboard */,
 				4CA7F4961F50EF5600DB62E8 /* Info.plist */,
@@ -300,7 +314,9 @@
 				4CA7F48B1F50EF5600DB62E8 /* AppDelegate.swift in Sources */,
 				4C8A6C731F5132F20043424A /* HomeSeriesCollectionViewCell.swift in Sources */,
 				4C8A6C751F5136370043424A /* Serie.swift in Sources */,
+				4C8A6C7D1F5270BF0043424A /* Request.swift in Sources */,
 				4C4FAC3B1F51021F00586F9D /* HomeSeriesViewController.swift in Sources */,
+				4C8A6C7B1F526F090043424A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
