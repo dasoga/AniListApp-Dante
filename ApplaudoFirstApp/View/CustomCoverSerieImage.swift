@@ -38,7 +38,6 @@ class CustomCoverSerieImage: UIImageView {
         URLSession.shared.dataTask(with: url!, completionHandler: { (imageData, response, error) in
             // Check if data has an error
             if error != nil{
-                print(error)
                 completion(false)
                 return
             }
