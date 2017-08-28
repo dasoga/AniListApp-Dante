@@ -12,7 +12,8 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
     
     let coverImage: CustomCoverSerieImage = {
         let imageView = CustomCoverSerieImage()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -20,10 +21,18 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
     let serieTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title..."
-        label.numberOfLines = 2
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let titleView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     var serie: Serie? {
@@ -51,7 +60,8 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
     private func setupView(){
         //Add all elements to cell view.
         addSubview(coverImage)
-        addSubview(serieTitleLabel)
+        addSubview(titleView)
+        titleView.addSubview(serieTitleLabel)
         
         
         // Configure the constraints for each element in the view
@@ -62,15 +72,19 @@ class HomeSeriesCollectionViewCell: UICollectionViewCell {
         coverImage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         coverImage.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         
+        titleView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        titleView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        titleView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        titleView.heightAnchor.constraint(equalToConstant: 66).isActive = true
+        
         // Cover image constraints title label
-        serieTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
-        serieTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        serieTitleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        serieTitleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        serieTitleLabel.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+        serieTitleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 2).isActive = true
+        serieTitleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 2).isActive = true
     }
     
     private func setupImage(){
-        if let imageUrl = serie?.image_url_med{
+        if let imageUrl = serie?.image_url_lge{
             coverImage.loadImageFromURL(urlString: imageUrl, completion: { (success) in
                 if success{
                     

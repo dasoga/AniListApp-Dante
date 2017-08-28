@@ -9,18 +9,19 @@
 import Foundation
 
 class Serie: NSObject {
-    var id: Int?
+    var id: NSNumber?
     var title_english: String?
     var image_url_med: String?
     var image_url_lge: String?
+    var image_url_banner: String?
     var sdescription: String?
     var series_type: String?
-    var average_score: Int?
-    var mean_score: Int?
-    var popularity: Int?
+    var average_score: NSNumber?
+    var mean_score: NSNumber?
+    var popularity: NSNumber?
     var genres: [String]?
-    var totalEpisodes: Int?
-    var duration: Int?
+    var totalEpisodes: NSNumber?
+    var duration: NSNumber?
     
     override func setValue(_ value: Any?, forKey key: String) {
         let upperCaseFirstCharacter = String(key.characters.first!).uppercased()

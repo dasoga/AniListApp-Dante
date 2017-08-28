@@ -11,13 +11,6 @@ import OAuthSwift
 
 class HomeSeriesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-//         Example of data
-//    var series: [Serie] = {
-//        var exampleSerie = Serie()
-//        exampleSerie.serieTitle = "Example of serie title to show in cell"
-//        exampleSerie.serieImageURL = "No image"
-//        return [exampleSerie]
-//    }()
     
     let activityIndicator: UIActivityIndicatorView = {
         let acIn = UIActivityIndicatorView()
@@ -88,7 +81,23 @@ class HomeSeriesViewController: UICollectionViewController, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 4 + 10, height: 200)
+//        return CGSize(width: view.frame.width / 4, height: 160)
+        let cellsAcross: CGFloat = 3
+        let spaceBetweenCells: CGFloat = 1
+        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        return CGSize(width: dim, height: dim)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
     
 }
