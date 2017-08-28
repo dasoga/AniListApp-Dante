@@ -38,6 +38,13 @@
 			remoteGlobalIDString = 4CA7F4861F50EF5600DB62E8;
 			remoteInfo = ApplaudoFirstApp;
 		};
+		4CDCB3411F5492160005C913 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CF1BC911F54912600E4F05D /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F43502791A6791B200038A29;
+			remoteInfo = OAuthSwift;
+		};
 		4CF1BC9B1F54912600E4F05D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CF1BC911F54912600E4F05D /* OAuthSwift.xcodeproj */;
@@ -273,6 +280,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4CDCB3421F5492160005C913 /* PBXTargetDependency */,
 			);
 			name = ApplaudoFirstApp;
 			productName = ApplaudoFirstApp;
@@ -491,6 +499,11 @@
 			isa = PBXTargetDependency;
 			target = 4CA7F4861F50EF5600DB62E8 /* ApplaudoFirstApp */;
 			targetProxy = 4CA7F4A71F50EF5600DB62E8 /* PBXContainerItemProxy */;
+		};
+		4CDCB3421F5492160005C913 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwift;
+			targetProxy = 4CDCB3411F5492160005C913 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
